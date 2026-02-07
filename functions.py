@@ -1,5 +1,6 @@
 import requests
 import random
+import json
 
 base_url = 'https://pokeapi.co/api/v2/'
 
@@ -17,15 +18,25 @@ def get_pokemon_data(pokemon):
     return data
 
 def get_moves(pokemon_data):
-    return pokemon_data['moves']
+    with open('move_data.json', 'r', encoding='utf-8') as file:
+        moves = json.load(file)
+
+    moves_for_poke = []
+    poke_moves = []
+    poke_moves_data = []
+    for move_entry in pokemon_data['moves']:
+        name = move_entry['move']['name']
+        poke_moves.append(name)
+    for move_entry in moves:
+        if move_entry['identifier'] in poke_moves:
+            poke_moves_data.append(move_entry)
+    return poke_moves_data
 
 def randomize_moves(moves):
     poss_moves = []
     for move in moves:
-        url = move['move']['url']
-        move_data = get_move_info(url)
-        if move_data['damage_class']['name'] == 'physical' and (move_data.get('power', 0) or 0) != 0:
-            poss_moves.append(move_data)
+        if (move.get('power', 0) or 0) != 0:
+            poss_moves.append(move)
     chosen = random.sample(poss_moves, 3)
     poke_moves = []
     for move in chosen:
