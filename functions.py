@@ -50,3 +50,16 @@ def get_move_info(url):
 
 def random_iv():
     return random.randint(0, 31)
+
+def first_mover(poke1, poke2):
+    if poke1.speed > poke2.speed:
+        return poke1, poke2
+    elif poke2.speed > poke1.speed:
+        return poke2, poke1
+    elif poke1.speed == poke2.speed:
+        first = random.choice([poke1, poke2])
+        if poke1 != first:
+            second = poke1
+        elif poke2 != first:
+            second = poke2
+    return first, second

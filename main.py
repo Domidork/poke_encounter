@@ -25,8 +25,8 @@ print(poke1)
 poke2 = pokemon(poke_name_2)
 print(poke2)
 
-
-use_move1 = poke1.use_rand_move(poke2)
+move_order = first_mover(poke1, poke2)
+use_move1 = move_order[0].use_rand_move(move_order[1])
 print(use_move1[2])
-use_move2 = poke2.use_rand_move(poke1)
+use_move2 = move_order[1].use_rand_move(move_order[0])
 print(use_move2[2])

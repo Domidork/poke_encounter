@@ -19,6 +19,7 @@ class pokemon():
         self.health = int((((2 * self.base_health + self.iv) * self.level) / 100)) + self.level + 10
         self.attack = int(((2 * self.base_attack + self.iv) * self.level) / 100) + 5
         self.defence = int(((2 * self.base_defence + self.iv) * self.level) / 100) + 5
+        self.speed = int(((2 * self.base_speed + self.iv) * self.level) / 100) + 5
         #--------------
 
 
@@ -36,6 +37,8 @@ class pokemon():
 
         return '\n'.join(lines)
     
+
+    #takes damage as well as printing message about the damage and health
     def take_damage(self, other, inflicted):
         dmg = int(((((2*other.level)/5)+2)*other.attack * (inflicted/self.defence))/50 + 2)
         self.health -= dmg
