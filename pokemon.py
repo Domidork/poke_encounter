@@ -51,7 +51,11 @@ class pokemon():
     def use_rand_move(self, other):
         choice = random.choice(self.moves)
         move_name = choice['identifier']
-        move_dmg = choice.get('power', 0) or 0
+        move_dmg = int(choice.get('power', 0) or 0)
+        move_acc = int(choice.get('accuracy', 100) or 100)
+        acc_seed = random.randint(0, 99)
+        if acc_seed > move_acc:
+            return (0, 0, (f'{self.name} missed!', True))
         # Inflicts the damage on the target pokemon
         dmg_message = other.take_damage(self, move_dmg)
         # --------------
