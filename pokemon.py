@@ -7,6 +7,7 @@ class pokemon():
         self.name = name
         self.level = 5
         self.iv = random_iv()
+        self.alive = True
         self.possible_moves = get_moves(self.data)
         self.moves = randomize_moves(self.possible_moves)
         # Base stats
@@ -28,6 +29,7 @@ class pokemon():
 
         lines.append(f'\n------{self.data['name'].capitalize()}------')
         lines.append(f'Health: {self.data['stats'][0]['base_stat']}')
+        lines.append(f'Speed: {self.speed}')
         lines.append('Moves:')
         
         for move in self.moves:
@@ -42,7 +44,9 @@ class pokemon():
     def take_damage(self, other, inflicted):
         dmg = int(((((2*other.level)/5)+2)*other.attack * (inflicted/self.defence))/50 + 2)
         self.health -= dmg
-        return f'{other.name} dealt {dmg}dmg to {self.name}!\n{self.name} is now at {self.health}hp!'
+        if self.health <= 0:
+            return f'{other.name} dealt {dmg}dmg to {self.name}!\n{self.name} fainted!', False
+        return f'{other.name} dealt {dmg}dmg to {self.name}!\n{self.name} is now at {self.health}hp!', True
 
     def use_rand_move(self, other):
         choice = random.choice(self.moves)

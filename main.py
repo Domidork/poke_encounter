@@ -24,9 +24,15 @@ print(poke1)
 
 poke2 = pokemon(poke_name_2)
 print(poke2)
-
-move_order = first_mover(poke1, poke2)
-use_move1 = move_order[0].use_rand_move(move_order[1])
-print(use_move1[2])
-use_move2 = move_order[1].use_rand_move(move_order[0])
-print(use_move2[2])
+while poke1.health > 0 and poke2.health > 0:
+    move_order = first_mover(poke1, poke2)
+    use_move1 = move_order[0].use_rand_move(move_order[1])
+    dmg_return1 = use_move1[2]
+    print(dmg_return1[0])
+    if dmg_return1[1] == False:
+        break
+    use_move2 = move_order[1].use_rand_move(move_order[0])
+    dmg_return2 = use_move2[2]
+    print(dmg_return2[0])
+    if dmg_return2[1] == False:
+        break
