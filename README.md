@@ -7,10 +7,10 @@ Setup:
   4) have fun!
 
 Special commands: '--help' and '--link'
-  --link: creates a symlink to the home directory so that the program can be run from anywhere using '~/poke'
-  --help: prints a brief usage guide to the console
+  1) --link: creates a symlink to the home directory so that the program can be run from anywhere using '~/poke'
+  2) --help: prints a brief usage guide to the console
 
 Notes:
-  This project requires python3 to run
-  this project is intended to run in linux and you may run into issues in other operating systems
-  this is heavily a work in progress so there will be issues
+  1) This project requires python3 to run
+  2) this project is intended to run in linux and you may run into issues in other operating systems
+  3) this is heavily a work in progress so there will be issues
