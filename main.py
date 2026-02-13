@@ -1,9 +1,20 @@
+#!/usr/bin/env python3
+
 import sys
-import random
-import json
+import os
+import subprocess
 from functions import *
 from pokemon import pokemon
 
+if '--help' in sys.argv:
+    print(help())
+    sys.exit()
+if '--link' in sys.argv:
+    if not os.path.islink(str((subprocess.run(['pwd'], capture_output=True).stdout)) + '/wrapper.sh'):
+        subprocess.run(['./linker.sh'], )
+    else:
+        print('You have already linked this program to home!')
+    sys.exit()
 if len(sys.argv) == 3:
     poke_name_1 = sys.argv[1]
     poke_name_2 = sys.argv[2]
@@ -12,10 +23,10 @@ elif len(sys.argv) == 2:
         poke_name_1 = choose_random_pokemon()
         poke_name_2 = choose_random_pokemon()
     else:
-        print('Usage: [pokemon <name1> <name2>] or [pokemon random]')
+        print('Usage: [~/poke <pokemon1> <pokemon2>] or [~/poke random]')
         sys.exit()
 else:
-    print('Usage: [pokemon <name1> <name2>] or [pokemon random]')
+    print('Usage: [~/poke <pokemon1> <pokemon2>] or [~/poke random]')
     sys.exit()
 
 poke1 = pokemon(poke_name_1)

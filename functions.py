@@ -1,6 +1,7 @@
 import requests
 import random
 import json
+import os
 
 base_url = 'https://pokeapi.co/api/v2/'
 
@@ -18,7 +19,8 @@ def get_pokemon_data(pokemon):
     return data
 
 def get_moves(pokemon_data):
-    with open('move_data.json', 'r', encoding='utf-8') as file:
+    dir = os.path.dirname(os.path.realpath(__file__))
+    with open(f'{dir}/move_data.json', 'r', encoding='utf-8') as file:
         moves = json.load(file)
 
     moves_for_poke = []
@@ -63,3 +65,6 @@ def first_mover(poke1, poke2):
         elif poke2 != first:
             second = poke2
     return first, second
+
+def help():
+    return 'Usage: [~/poke <pokemon1> <pokemon2>] or [~/poke random]'
