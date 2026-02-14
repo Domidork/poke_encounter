@@ -6,6 +6,9 @@ Setup:
   3) run ~/poke --help to get a small usage guide
   4) have fun!
 
+Tags:
+  1) -rt: enables realtime mode
+
 Special commands: '--help' and '--link'
   1) --link: creates a symlink to the home directory so that the program can be run from anywhere using '~/poke'
   2) --help: prints a brief usage guide to the console

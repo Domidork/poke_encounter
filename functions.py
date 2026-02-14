@@ -67,4 +67,4 @@ def first_mover(poke1, poke2):
     return first, second
 
 def help():
-    return 'Usage: [~/poke <pokemon1> <pokemon2>] or [~/poke random]'
+    return 'Usage: [~/poke <pokemon1> <pokemon2>] or [~/poke random]\nTags: -rt (enables realtime mode)\nSpecial: --link (adds a symlink to the home directory)'
