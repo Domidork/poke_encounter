@@ -27,13 +27,13 @@ class pokemon():
     def __str__(self):
         lines = []
 
-        lines.append(f'\n------{self.data['name'].capitalize()}------')
-        lines.append(f'Health: {self.data['stats'][0]['base_stat']}')
+        lines.append(f'\n------{self.data["name"].capitalize()}------')
+        lines.append(f'Health: {self.data["stats"][0]["base_stat"]}')
         lines.append(f'Speed: {self.speed}')
         lines.append('Moves:')
         
         for move in self.moves:
-            lines.append(f'\t{move['identifier']}: {move.get('power', 0) or 0}')
+            lines.append(f'\t{move["identifier"]}: {move.get("power", 0) or 0}')
 
         lines.append("")
 
